@@ -67,8 +67,8 @@ int main(int argc, char** argv)
 	while (!feof(in))
 	{
 		fread(&tmp, 3, 1, in);
-		agg[i] <<= 1; // has no effect on the first round
-		agg[i] |= (tmp > 0) ? 0x01 : 0x00;
+		agg[i] >>= 1; // has no effect on the first round
+		agg[i] |= (tmp > 0) ? 0x80 : 0x00;
 
 		++i;
 
