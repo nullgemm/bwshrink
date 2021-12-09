@@ -43,20 +43,3 @@ leakgrind: $(BIND)/$(NAME)
 clean:
 	@echo "cleaning"
 	@rm -rf $(BIND) $(OBJD) valgrind.log
-
-remotes:
-	@echo "registering remotes"
-	@git remote add github git@github.com:nullgemm/$(NAME).git
-	@git remote add gitea ssh://git@git.nullgemm.fr:2999/nullgemm/$(NAME).git
-
-github:
-	@echo "sourcing submodules from https://github.com"
-	@cp .github .gitmodules
-	@git submodule sync
-	@git submodule update --init --remote
-
-gitea:
-	@echo "sourcing submodules from personal server"
-	@cp .gitea .gitmodules
-	@git submodule sync
-	@git submodule update --init --remote
